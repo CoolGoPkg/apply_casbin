@@ -31,13 +31,14 @@ func main() {
 
 	r.POST("/api/v1/add", func(c *gin.Context) {
 		fmt.Println("增加Policy")
-		if ok, err := e.AddGroupingPolicy("mark", "admin", "domain1"); !ok {
+		if ok, err := e.AddGroupingPolicy("SMark", "sAdmin", "domain1"); !ok {
 			fmt.Println("GroupingPolicy已经存在")
 			fmt.Println("group policy err : ", err)
 			return
 		}
 
-		if ok, _ := e.AddPolicy("admin", "domain1", "/api/v1/hello", "GET"); !ok {
+		// TODO: 尝试匹配方法
+		if ok, _ := e.AddPolicy("sAdmin", "domain1", "/api/v1/hello", "GET|POST|PUT"); !ok {
 			fmt.Println("Policy已经存在")
 		} else {
 			fmt.Println("增加成功")
@@ -69,6 +70,15 @@ func main() {
 	r.GET("/api/v1/hello", func(c *gin.Context) {
 		fmt.Println("Hello 接收到GET请求..")
 	})
+	r.POST("/api/v1/hello", func(c *gin.Context) {
+		fmt.Println("Hello 接收到POST请求..")
+	})
+	r.PUT("/api/v1/hello", func(c *gin.Context) {
+		fmt.Println("Hello 接收到PUT请求..")
+	})
+	r.DELETE("/api/v1/hello", func(c *gin.Context) {
+		fmt.Println("Hello 接收到DELETE..")
+	})
 
-	r.Run(":9000") //参数为空 默认监听8080端口
+	r.Run(":9001") //参数为空 默认监听8080端口
 }

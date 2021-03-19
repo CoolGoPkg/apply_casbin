@@ -1,7 +1,8 @@
-p, admin, domain1, data1, read
-p, admin, domain1, data1, write
+p, admin, tech, data1, read
+p, admin, tech, data1, write
 p, admin, domain2, data2, read
 p, admin, domain2, data2, write
 
-g, alice, admin, domain1
+g, alice, admin,tech
+g, alice, admin,domain2
 g, bob, admin, domain2

@@ -1,3 +1,7 @@
-p,zhankun,source1,read
+p,zhankun,source1,write
 p,alice,source2,read
-p,alice,data1,read
+p,alice,data1,write
+p,alice,data1,write
+p,alice,data1,read allow
+p,192.168.2.0/24,data1,wirte deny
+p,alice,data1,read deny
